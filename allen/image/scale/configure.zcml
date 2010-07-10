@@ -24,6 +24,7 @@
   <browser:page name="scale"
     for="zope.app.file.interfaces.IImage"
     class=".browser.ImageScale"
+    layer="zope.interface.Interface"
     permission="zope.View"
   />
 
