@@ -1,0 +1,30 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  i18n_domain="allen">
+
+  <class class="zope.app.file.image.Image">
+    <implements interface="zope.annotation.interfaces.IAttributeAnnotatable" />
+  </class>
+
+  <adapter
+    for="zope.app.file.interfaces.IImage"
+    provides="zope.annotation.interfaces.IAnnotations"
+    factory="zope.annotation.attribute.AttributeAnnotations"
+    />
+
+  <adapter
+    for="zope.app.file.interfaces.IImage"
+    provides=".interfaces.IThumbnail"
+    factory=".Thumbnail"
+    trusted="True"
+    permission="zope.Public"
+    />
+
+  <browser:page name="scale"
+    for="zope.app.file.interfaces.IImage"
+    class=".browser.ImageScale"
+    permission="zope.View"
+  />
+
+</configure>
